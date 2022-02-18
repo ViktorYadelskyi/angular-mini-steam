@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-@Component({
-  selector: 'app-games',
-  templateUrl: './games.component.html',
-  styleUrls: ['./games.component.scss']
+import { GamesRoutingModule } from './games-routing.module';
+import { GamesComponent } from './games.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GamecardComponent } from './gamecard/gamecard.component';
+
+@NgModule({
+  declarations: [GamesComponent, GamecardComponent],
+  imports: [CommonModule, GamesRoutingModule, FormsModule, ReactiveFormsModule],
 })
-export class GamesComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class GamesModule {}

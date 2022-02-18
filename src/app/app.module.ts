@@ -6,8 +6,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { LoginComponent } from 'src/app/login/login.component';
 import { ProfileComponent } from 'src/app/user-profile/user-profile.component';
-import { GamesComponent } from 'src/app/games/games.module';
+// import { GamesComponent } from 'src/app/games/games.module';
 import { Err404Component } from './err404/err404.component';
+// import { GamecardComponent } from './games/gamecard/gamecard.component';
+import { GamesComponent } from './games/games.component';
+import { GamecardComponent } from './games/gamecard/gamecard.component';
 
 @NgModule({
   declarations: [
@@ -15,19 +18,12 @@ import { Err404Component } from './err404/err404.component';
     LoginComponent,
     ProfileComponent,
     GamesComponent,
-    Err404Component
+    GamecardComponent,
+    Err404Component,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule, 
-    ReactiveFormsModule
-  ],
-    exports: [
-    FormsModule, 
-    ReactiveFormsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  exports: [FormsModule, ReactiveFormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
