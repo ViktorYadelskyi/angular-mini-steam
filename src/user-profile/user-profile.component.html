@@ -3,20 +3,41 @@
         <h3>Profile</h3>
         <form [formGroup]="profileForm" (submit)="submit()">
             <div class="form-item">
-                <p class="input-description">Username</p>
-                <input class="input" type="text" placeholder="Username" formControlName="username" value="{{username}}">
+                <label for="userName" class="input-description">Username</label>
+                <input 
+                    id="userName"
+                    class="input" 
+                    type="text" 
+                    placeholder="Username" 
+                    formControlName="username" 
+                    value="{{username}}"
+                >
             </div>
         
             <div class="form-item">
-                <p class="input-description">Email</p>
-                <input class="input" type="text" placeholder="email" formControlName="email" value="{{email}}" readonly>
+                <label for="userEmail" class="input-description">Email</label>
+                <input 
+                    id="userEmail"
+                    class="input" 
+                    type="text" 
+                    placeholder="email" 
+                    formControlName="email" 
+                    value="{{email}}" readonly
+                >
             </div>
         
             <div class="form-item">
-                <p class="input-description">Age</p>
-                <input class="input" type="number" min="1" placeholder="Age" formControlName="age" value="{{age}}">
+                <label for="userAge" class="input-description">Age</label>
+                <input 
+                    id="userAge"
+                    class="input" 
+                    type="number" 
+                    min="1" 
+                    placeholder="Age" 
+                    formControlName="age" 
+                    value="{{age}}"
+                >
             </div>
-        
             <button class="submit-button" type="submit" [disabled]="!profileForm.valid">Save</button>
         </form>
     </div>

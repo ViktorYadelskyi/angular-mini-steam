@@ -1,0 +1,41 @@
+<div class="formWrapper">
+  <form
+    class="form-signin"
+    (ngSubmit)="onSubmit(signInForm)"
+    #signInForm="ngForm"
+  >
+    <h1>Sign In</h1>
+
+    <div class="form-signin-input">
+      <label for="inputlogin" class="sr-only">Email -> user@mail.com</label>
+      <input
+        type="text"
+        id="inputLogin"
+        class="form-control"
+        name="login"
+        placeholder="Email"
+        ngModel
+        required
+      >
+    </div>
+
+    <div class="form-signin-input">
+      <label for="inputPassword" class="sr-only">Password -> pass</label>
+      <input
+        type="password"
+        id="inputPassword"
+        class="form-control"
+        name="password"
+        placeholder="Password"
+        autocomplete="on"
+        ngModel
+        required
+      >
+    </div>
+
+    <button class="btn" type="submit">Sign In</button>
+
+    <div *ngIf="isFormValid">Fill in all the fields.</div>
+    <div *ngIf="areCredentialsInvalid">Incorrect username or password.</div>
+  </form>
+</div>

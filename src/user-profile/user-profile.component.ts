@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {  FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { SignInData } from 'src/model/signInData';
 
 @Component({
   selector: 'app-profile',
@@ -20,9 +21,13 @@ export class ProfileComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
 
+
+  
   ngOnInit(): void {
+
+    
       this.username = null;
-      this.email = "UserEmail";
+      this.email = "userEmail"
       this.age = 42;
 
 

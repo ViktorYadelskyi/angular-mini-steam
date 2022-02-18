@@ -1,0 +1,68 @@
+.formWrapper {
+  margin: 0 auto;
+  width: 320px;
+  height: 340px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.form-signin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.form-signin > h1 {
+  margin-top: 60px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+}
+
+.form-signin-input {
+  display: flex;
+  flex-direction: column;
+  margin-top: 25px;
+  width: 64%;
+}
+
+.sr-only {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.form-control {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  color: #777777;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.btn {
+  font-size: 16px;
+  margin-top: 20px;
+  padding: 8px 16px;
+  background: #6c69ff;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  border: 1px solid #6c69ff;
+  width: 200px;
+  color: #ffffff;
+  cursor: pointer;
+}

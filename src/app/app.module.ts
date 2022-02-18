@@ -4,14 +4,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { LoginComponent } from 'src/login/login.component';
 import { ProfileComponent } from 'src/user-profile/user-profile.component';
 import { GamesComponent } from 'src/games/games.module';
+import { Err404Component } from '../err404/err404.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
     ProfileComponent,
-    GamesComponent
+    GamesComponent,
+    Err404Component
   ],
   imports: [
     BrowserModule,
