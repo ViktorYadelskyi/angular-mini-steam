@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {  FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { SignInData } from 'src/model/signInData';
+import { SignInData } from 'src/app/model/signInData';
 
 @Component({
   selector: 'app-profile',

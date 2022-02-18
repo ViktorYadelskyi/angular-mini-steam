@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { FriendsComponent } from 'src/friends/friends.component'; 
-import { GamesComponent } from 'src/games/games.module'; 
-import { AuthGuard } from 'src/guards/auth.guard'; 
-import { LibraryComponent } from 'src/library/library.component'; 
-import { LoginComponent } from 'src/login/login.component'; 
-import { ProfileComponent } from 'src/user-profile/user-profile.component'; 
-import { Err404Component } from 'src/err404/err404.component';
+import { FriendsComponent } from 'src/app/friends/friends.component'; 
+import { GamesComponent } from 'src/app/games/games.module'; 
+import { AuthGuard } from 'src/app/guards/auth.guard'; 
+import { LibraryComponent } from 'src/app/library/library.component'; 
+import { LoginComponent } from 'src/app/login/login.component'; 
+import { ProfileComponent } from 'src/app/user-profile/user-profile.component'; 
+import { Err404Component } from 'src/app/err404/err404.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
