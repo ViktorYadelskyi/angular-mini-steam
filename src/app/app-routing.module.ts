@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { FriendsComponent } from 'src/app/friends/friends.component';
-// import { GamesComponent } from 'src/app/games/games.module';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { LibraryComponent } from 'src/app/library/library.component';
 import { LoginComponent } from 'src/app/login/login.component';
