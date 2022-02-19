@@ -1,15 +1,13 @@
-<div>
-  <p>login works!</p>
-
-  <form [formGroup]="loginForm" (ngSubmit)="submit()">
-    <input type="text" placeholder="Email" formControlName="email" />
+<div class="form__login-container">
+  <form class="form__login-item"  [formGroup]="loginForm" (ngSubmit)="submit()">
+    <input class="form__login-input" type="text" placeholder="Email" formControlName="email" />
     <p *ngIf="email?.errors?.['required']">*Email address is required</p>
     <p *ngIf="email?.errors?.['email']">Please enter a valid email address</p>
 
-    <input type="password" placeholder="Password" formControlName="password" />
+    <input  class="form__login-input" type="password" placeholder="Password" formControlName="password" />
     <p *ngIf="password?.errors?.['required']">*Password is required</p>
 
-    <button type="submit">Login</button>
+    <button class="form__button" type="submit">Login</button>
 
     <span>New to our platform? <a routerLink="/sign-up">Sign up!</a></span>
   </form>

@@ -1,7 +1,5 @@
-<div>
-  <p>sign up works!</p>
-
-  <form [formGroup]="signUpForm" (ngSubmit)="submit()">
+<div class="form__signup-container">
+  <form  class="form__signup-item" [formGroup]="signUpForm" (ngSubmit)="submit()">
     <div class="">
       <input type="text" placeholder="Name" formControlName="name" />
       <p *ngIf="name?.errors?.['required']">*Name is required</p>
@@ -37,7 +35,7 @@
       </p>
     </div>
 
-    <button type="submit">Sign Up</button>
-    <button routerLink="/login">Login</button>
+    <button class="form__submit-button" type="submit">Sign Up</button>
+    <button class="form__login-button" routerLink="/login">Login</button>
   </form>
 </div>
