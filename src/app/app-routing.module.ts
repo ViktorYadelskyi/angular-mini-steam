@@ -1,28 +1,60 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-
-import { FriendsComponent } from 'src/app/friends/friends.component';
-import { AuthGuard } from 'src/app/guards/auth.guard';
-import { LibraryComponent } from 'src/app/library/library.component';
-import { LoginComponent } from 'src/app/login/login.component';
-import { ProfileComponent } from 'src/app/user-profile/user-profile.component';
-import { Err404Component } from 'src/app/err404/err404.component';
+import { CommonModule } from '@angular/common';
+import { Routes, RouterModule } from '@angular/router';
+import { LoginComponent } from './login/login.component';
 import { GamesComponent } from './games/games.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+
+import {
+  canActivate,
+  redirectLoggedInTo,
+  redirectUnauthorizedTo,
+} from '@angular/fire/auth-guard';
+import { ProfileComponent } from './profile/profile.component';
+import { LibraryComponent } from './library/library.component';
+import { FriendsComponent } from './friends/friends.component';
+import { Err404Component } from './err404/err404.component';
+
+const redirectToLogin = () => redirectUnauthorizedTo(['login']);
+const redirectToHome = () => redirectLoggedInTo(['profile']);
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-  { path: 'games', component: GamesComponent, canActivate: [AuthGuard] },
-  { path: 'library', component: LibraryComponent, canActivate: [AuthGuard] },
-  { path: 'friends', component: FriendsComponent, canActivate: [AuthGuard] },
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: '404', component: Err404Component },
-
-  { path: '**', redirectTo: '404' },
+  { path: 'login', component: LoginComponent, ...canActivate(redirectToHome) },
+  {
+    path: 'sign-up',
+    component: SignUpComponent,
+    ...canActivate(redirectToHome),
+  },
+  {
+    path: 'games',
+    component: GamesComponent,
+    ...canActivate(redirectToLogin),
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    ...canActivate(redirectToLogin),
+  },
+  {
+    path: 'library',
+    component: LibraryComponent,
+    ...canActivate(redirectToLogin),
+  },
+  {
+    path: 'friends',
+    component: FriendsComponent,
+    ...canActivate(redirectToLogin),
+  },
+  {
+    path: '**',
+    component: Err404Component,
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  declarations: [],
+  imports: [CommonModule, RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

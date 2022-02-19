@@ -1,13 +1,21 @@
 import { Component } from '@angular/core';
-import { AuthService } from 'src/services/auth/auth.service'; 
+import { Router } from '@angular/router';
+import { AuthenticationService } from './services/authentication.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'angular-mini-steam';
+  constructor(
+    public authService: AuthenticationService,
+    private router: Router
+  ) {}
 
-    constructor(public authService: AuthService) {}
+  logout() {
+    this.authService.logout().subscribe(() => {
+      this.router.navigate(['/']);
+    });
+  }
 }

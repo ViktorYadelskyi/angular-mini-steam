@@ -1,38 +1,54 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { SignInData } from '../model/signInData';
-import { AuthService } from '../../services/auth/auth.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { Router } from '@angular/router';
+import { HotToastService } from '@ngneat/hot-toast';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  isFormValid = false;
-  areCredentialsInvalid = false;
+  loginForm = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required]),
+  });
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthenticationService,
+    private router: Router,
+    private toast: HotToastService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit(): void {}
 
-  onSubmit(signInForm: NgForm) {
-    if (!signInForm.valid) {
-      this.isFormValid = true;
-      this.areCredentialsInvalid = false;
-      return;
-    }
-    this.checkCredentials(signInForm);
+  get email() {
+    return this.loginForm.get('email');
   }
 
-  private checkCredentials(signInForm: NgForm) {
-    const signInData = new SignInData(
-      signInForm.value.login,
-      signInForm.value.password
-    );
-    if (!this.authService.authenticate(signInData)) {
-      this.isFormValid = false;
-      this.areCredentialsInvalid = true;
+  get password() {
+    return this.loginForm.get('password');
+  }
+
+  submit() {
+    if (!this.loginForm.valid) {
+      return;
     }
+
+    const { email, password } = this.loginForm.value;
+    this.authService
+      .login(email, password)
+      .pipe(
+        this.toast.observe({
+          success: 'Logged in successfully',
+          loading: 'Logging in...',
+          error: ({ message }) => `There was an error: ${message} `,
+        })
+      )
+      .subscribe(() => {
+        this.router.navigate(['/games']);
+      });
   }
 }

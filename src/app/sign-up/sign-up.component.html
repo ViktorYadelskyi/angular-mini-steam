@@ -1,0 +1,43 @@
+<div>
+  <p>sign up works!</p>
+
+  <form [formGroup]="signUpForm" (ngSubmit)="submit()">
+    <div class="">
+      <input type="text" placeholder="Name" formControlName="name" />
+      <p *ngIf="name?.errors?.['required']">*Name is required</p>
+    </div>
+
+    <div class="">
+      <input type="text" placeholder="Email" formControlName="email" />
+      <p *ngIf="email?.errors?.['required']">*Email address is required</p>
+      <p *ngIf="email?.errors?.['email']">Please enter a valid email address</p>
+    </div>
+
+    <div class="">
+      <input
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+      />
+      <p *ngIf="password?.errors?.['required']">*Password is required</p>
+    </div>
+
+    <div class="">
+      <input
+        type="password"
+        placeholder="Confirm password"
+        formControlName="confirmPassword"
+      />
+      <p *ngIf="confirmPassword?.errors?.['required']">
+        *Confirm password is required
+      </p>
+
+      <p *ngIf="signUpForm.errors?.['passwordsDontMatch']">
+        Passwords should match
+      </p>
+    </div>
+
+    <button type="submit">Sign Up</button>
+    <button routerLink="/login">Login</button>
+  </form>
+</div>

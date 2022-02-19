@@ -1,41 +1,16 @@
-<div class="formWrapper">
-  <form
-    class="form-signin"
-    (ngSubmit)="onSubmit(signInForm)"
-    #signInForm="ngForm"
-  >
-    <h1>Sign In</h1>
+<div>
+  <p>login works!</p>
 
-    <div class="form-signin-input">
-      <label for="inputlogin" class="sr-only">Email -> user@mail.com</label>
-      <input
-        type="text"
-        id="inputLogin"
-        class="form-control"
-        name="login"
-        placeholder="Email"
-        ngModel
-        required
-      >
-    </div>
+  <form [formGroup]="loginForm" (ngSubmit)="submit()">
+    <input type="text" placeholder="Email" formControlName="email" />
+    <p *ngIf="email?.errors?.['required']">*Email address is required</p>
+    <p *ngIf="email?.errors?.['email']">Please enter a valid email address</p>
 
-    <div class="form-signin-input">
-      <label for="inputPassword" class="sr-only">Password -> pass</label>
-      <input
-        type="password"
-        id="inputPassword"
-        class="form-control"
-        name="password"
-        placeholder="Password"
-        autocomplete="on"
-        ngModel
-        required
-      >
-    </div>
+    <input type="password" placeholder="Password" formControlName="password" />
+    <p *ngIf="password?.errors?.['required']">*Password is required</p>
 
-    <button class="btn" type="submit">Sign In</button>
+    <button type="submit">Login</button>
 
-    <div *ngIf="isFormValid">Fill in all the fields.</div>
-    <div *ngIf="areCredentialsInvalid">Incorrect username or password.</div>
+    <span>New to our platform? <a routerLink="/sign-up">Sign up!</a></span>
   </form>
 </div>
