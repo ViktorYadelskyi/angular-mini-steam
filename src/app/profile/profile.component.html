@@ -1,6 +1,6 @@
 <div  *ngIf="user$ | async as user">
     <input value="{{ user.displayName }}"/>
-    <input value="{{ user.email }}" disabled />
+    <input value="{{ user.email }}" readonly />
 </div>
 <!-- <h1 *ngIf="user$ | async as user">Welcome {{ user.displayName }}!</h1>
 <h1 *ngIf="user$ | async as user">Welcome {{ user.email }}!</h1> -->

@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Err404Component } from './err404/err404.component';
 import { FriendsComponent } from './friends/friends.component';
 import { LibraryComponent } from './library/library.component';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { LibraryComponent } from './library/library.component';
     provideStorage(() => getStorage()),
     HotToastModule.forRoot(),
     BrowserAnimationsModule,
+    provideDatabase(() => getDatabase()),
   ],
   providers: [],
   bootstrap: [AppComponent],
