@@ -3,6 +3,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -21,7 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Err404Component } from './err404/err404.component';
 import { FriendsComponent } from './friends/friends.component';
 import { LibraryComponent } from './library/library.component';
-import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { GamecardComponent } from './games/gamecard/gamecard.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { provideDatabase,getDatabase } from '@angular/fire/database';
     Err404Component,
     FriendsComponent,
     LibraryComponent,
+     GamecardComponent
   ],
   imports: [
     BrowserModule,

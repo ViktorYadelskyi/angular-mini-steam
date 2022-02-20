@@ -11,13 +11,14 @@ import { GamecardComponent } from './gamecard/gamecard.component';
 @NgModule({
   declarations: [
     GamesComponent,
-    GamecardComponent
+     GamecardComponent
   ],
   imports: [
     CommonModule,
     GamesRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    GamecardComponent
   ]
 })
 export class GamesModule { }

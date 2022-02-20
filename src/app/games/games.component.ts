@@ -6,7 +6,7 @@ import { GamesService } from '../services/game.service';
 @Component({
   selector: 'app-games',
   templateUrl: './games.component.html',
-  styleUrls: ['./games.component.scss'],
+  styleUrls: ['./games.component.css'],
 })
 export class GamesComponent implements OnInit {
   searchForm: FormGroup;
@@ -21,7 +21,7 @@ export class GamesComponent implements OnInit {
 
   ngOnInit(): void {
     this.gamesService.games$.subscribe((games) => this.gameList = games);
-    console.log(  this.gamesService.games$.subscribe((games) => this.gameList = games))
+    console.log(this.gamesService.games$.forEach(item => console.log(item)))
   }
 
   searchGame(): void {
