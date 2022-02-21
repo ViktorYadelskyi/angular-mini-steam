@@ -33,4 +33,8 @@ export class AuthenticationService {
   logout(): Observable<any> {
     return from(this.auth.signOut());
   }
+
+  saveUserInfo() {
+    alert('Save data');
+  }
 }

@@ -1,6 +1,32 @@
-<div  *ngIf="user$ | async as user">
+<!-- <div  *ngIf="user$ | async as user">
     <input value="{{ user.displayName }}"/>
     <input value="{{ user.email }}" readonly />
-</div>
+</div> -->
 <!-- <h1 *ngIf="user$ | async as user">Welcome {{ user.displayName }}!</h1>
 <h1 *ngIf="user$ | async as user">Welcome {{ user.email }}!</h1> -->
+
+<div *ngIf="user$ | async as user">
+  <div>
+    <h2>Profile</h2>
+    <form [formGroup]="profileForm">
+      <label for="usernameInput">Username</label>
+      <input
+        type="text"
+        placeholder="Username"
+        id="usernameInput"
+        value="{{ user.displayName }}"
+      />
+      <label for="emailInput">Email</label>
+      <input
+        type="text"
+        placeholder="Email"
+        id="emailInput"
+        value="{{ user.email }}"
+        readonly
+      />
+      <label for="ageInput">Age</label>
+      <input type="number" placeholder="Age" id="ageInput" value="40" />
+      <button (click)="saveInfo()">Save</button>
+    </form>
+  </div>
+</div>
