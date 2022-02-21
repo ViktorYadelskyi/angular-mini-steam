@@ -1,14 +1,44 @@
-<div>
-  <div>
+<div class="profile-container">
+  <div class="profile-form">
     <h3>Profile</h3>
     <form [formGroup]="profileForm" (submit)="submit()">
-      <p>Username</p>
-      <input type="text" placeholder="username" formControlName="username" value="{{user ? user.username : null}}">
-      <p>Email</p>
-      <input type="text" placeholder="email" formControlName="email" value="{{user ? user.email : null}}" readonly>
-      <p>Age</p>
-      <input type="number" min="1" placeholder="age" formControlName="age" value="{{user ? user.age : null}}">
-      <button type="submit" [disabled]="!profileForm.valid">Save</button>
+      <div class="form-profile-input">
+        <p>Username</p>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="username"
+          formControlName="username"
+          value="{{ user ? user.username : null }}"
+        />
+      </div>
+
+      <div class="form-profile-input">
+        <p>Email</p>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="email"
+          formControlName="email"
+          value="{{ user ? user.email : null }}"
+          readonly
+        />
+      </div>
+
+      <div class="form-profile-input">
+        <p>Age</p>
+        <input
+          type="number"
+          class="form-control"
+          min="1"
+          placeholder="age"
+          formControlName="age"
+          value="{{ user ? user.age : null }}"
+        />
+      </div>
+      <button class="btn" type="submit" [disabled]="!profileForm.valid">
+        Save
+      </button>
     </form>
   </div>
 </div>

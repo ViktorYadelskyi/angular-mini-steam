@@ -7,7 +7,7 @@ import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
   title = 'steamClone';
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
     email: new FormControl(null, [Validators.required]),
     password: new FormControl(null, [Validators.required]),
   });
-  public usersList = users; 
+  public usersList = users;
 
   private uid: any;
 
@@ -23,22 +23,27 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private userService: UserService
-  ) { }
+  ) {}
 
-  public ngOnInit(): void { }
+  public ngOnInit(): void {}
 
   public submit() {
-    const { email, password } = this.loginForm.value
+    const { email, password } = this.loginForm.value;
 
-    this.userService.login(email, password)
-      .then((res) => { console.log('succes', res); this.uid = res.user?.uid })
-      .then(() => { this.router.navigate(['/menu', this.uid, 'games']) })
+    this.userService
+      .login(email, password)
+      .then((res) => {
+        console.log('succes', res);
+        this.uid = res.user?.uid;
+      })
+      .then(() => {
+        this.router.navigate(['/menu', this.uid, 'games']);
+      })
       .catch((error) => {
         console.log(error.code);
         console.log(error.message);
         alert(error.message);
-      })
+      });
     this.loginForm.reset();
   }
-
 }

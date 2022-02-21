@@ -1,7 +1,6 @@
-
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MenuComponent } from './menu/menu.component'
+import { MenuComponent } from './menu/menu.component';
 import { LoginComponent } from './login/login.component';
 import { GamesComponent } from './games/games.component';
 import { LibraryComponent } from './library/library.component';
@@ -11,25 +10,25 @@ import { FriendsSearchComponent } from './friends/friends-search/friends-search.
 import { FriendsListComponent } from './friends/friends-list/friends-list.component';
 
 const friendsRoutes: Routes = [
-  { path: 'search', component: FriendsSearchComponent},
-  { path: 'list', component: FriendsListComponent}
+  { path: 'search', component: FriendsSearchComponent },
+  { path: 'list', component: FriendsListComponent },
 ];
 
 const menuRoutes: Routes = [
-  {path: 'games', component: GamesComponent},
-  {path: 'library', component: LibraryComponent},
-  {path: 'friends', component: FriendsComponent},
-  {path: 'friends', component: FriendsComponent, children: friendsRoutes},
-  {path: 'profile', component: ProfileComponent},
+  { path: 'games', component: GamesComponent },
+  { path: 'library', component: LibraryComponent },
+  { path: 'friends', component: FriendsComponent },
+  { path: 'friends', component: FriendsComponent, children: friendsRoutes },
+  { path: 'profile', component: ProfileComponent },
 ];
 const routes: Routes = [
-  { path: '', component: LoginComponent},
-  { path: 'menu/:uid', component: MenuComponent},
-  {path: 'menu/:uid', component: MenuComponent, children: menuRoutes}
+  { path: '', component: LoginComponent },
+  { path: 'menu/:uid', component: MenuComponent },
+  { path: 'menu/:uid', component: MenuComponent, children: menuRoutes },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

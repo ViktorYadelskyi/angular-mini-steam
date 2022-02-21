@@ -4,14 +4,13 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  styleUrls: ['./menu.component.css'],
 })
 export class MenuComponent implements OnInit {
   uid: any;
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.uid = this.route.snapshot.paramMap.get('uid');
   }
-
 }

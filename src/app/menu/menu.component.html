@@ -1,8 +1,28 @@
-<menu>
-    <li><a [routerLink]="['']" class="button fancy-button"><i class="material-icons">explore</i></a></li>
-    <li><a [routerLink]="['/menu', uid, 'games']">Games</a></li>
-    <li><a [routerLink]="['/menu', uid, 'library']">Library</a></li>
-    <li><a [routerLink]="['/menu', uid, 'friends', 'list']">Friends</a></li>
-    <li><a [routerLink]="['/menu', uid, 'profile']">Profile</a></li>
-</menu>
+<nav class="nav">
+  <div class="nav__menu">
+    <img src="../assets/logo.png" alt="steam" class="logo" />
+    <a
+      routerLinkActive="router-link-active"
+      [routerLink]="['/menu', uid, 'games']"
+      >Games</a
+    >
+    <a
+      routerLinkActive="router-link-active"
+      [routerLink]="['/menu', uid, 'library']"
+      >Library</a
+    >
+    <a
+      routerLinkActive="router-link-active"
+      [routerLink]="['/menu', uid, 'friends', 'list']"
+      >Friends</a
+    >
+    <a
+      routerLinkActive="router-link-active"
+      [routerLink]="['/menu', uid, 'profile']"
+      >Profile</a
+    >
+  </div>
+  <a class="btn__logout" [routerLink]="['']">Log out</a>
+</nav>
+
 <router-outlet></router-outlet>

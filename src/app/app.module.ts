@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -27,16 +26,16 @@ import { FriendsListComponent } from './friends/friends-list/friends-list.compon
     FriendsComponent,
     ProfileComponent,
     FriendsSearchComponent,
-    FriendsListComponent
+    FriendsListComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
