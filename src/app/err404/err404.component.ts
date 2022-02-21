@@ -11,5 +11,4 @@ export class Err404Component implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

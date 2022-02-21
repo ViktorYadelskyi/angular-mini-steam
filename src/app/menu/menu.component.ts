@@ -13,5 +13,4 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
     this.uid = this.route.snapshot.paramMap.get('uid');
   }
-
 }
