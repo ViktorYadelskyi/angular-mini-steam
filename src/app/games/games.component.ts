@@ -1,32 +1,62 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Game } from 'src/app/models/game';
-import { GamesService } from '../services/game.service';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { Game } from '../models';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-games',
   templateUrl: './games.component.html',
-  styleUrls: ['./games.component.css'],
+  styleUrls: ['./games.component.css']
 })
 export class GamesComponent implements OnInit {
-  searchForm: FormGroup;
-  gameList: Game[] = [];
+  public gamesForm!: FormGroup;
+  private allGames!: Game[];
+  public games!: Game[];
+  public max = 13
+  private rate = 100;
 
-  constructor(private gamesService: GamesService) {
-    this.searchForm = new FormGroup({
-      searchGame: new FormControl('', Validators.minLength(1)),
-    });
-    this.gameList = [];
-  }
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserService,
+    private route: ActivatedRoute,
+  ) { }
 
   ngOnInit(): void {
-    this.gamesService.games$.subscribe((games) => this.gameList = games);
-    console.log(this.gamesService.games$.forEach(item => console.log(item)))
+    this.initForm();
+    this.userService.readAllGames().subscribe(r => {
+      this.allGames = r;
+      this.games = [...this.allGames]
+      console.log(this.allGames)
+    });
   }
 
-  searchGame(): void {
-    const gameName = this.searchForm.value?.searchGame;
-    this.gamesService.getGames(gameName);
-    this.gamesService.games$.subscribe((games) => this.gameList = games);
+  private initForm() {
+    this.gamesForm = this.formBuilder.group({
+      searchGames: new FormControl('', [Validators.required]),
+      casual: new FormControl(true),
+      strategy: new FormControl(true),
+      adventure: new FormControl(true),
+      range: new FormControl(this.max),
+    })
   }
+
+  public addFilter() {
+    const price = this.gamesForm.value.range * this.rate;
+    this.games = this.allGames.filter(game => this.gamesForm.value[game.genre]);
+    if (this.gamesForm.value.range !== this.max) {
+      this.games = this.games.filter(game => game.price <= price);
+    }
+    this.games = this.games.filter(game => game.name.includes(this.gamesForm.value.searchGames))
+  }
+
+  public addGame(name: string) {
+    const addGame = this.games.find(game => game.name === name);
+    const uid = this.route.snapshot.root.children[0].params['uid'];
+    if (addGame) {
+      this.userService.addGameInLibrary(uid, addGame);
+    }
+  }
+
 }

@@ -1,54 +1,44 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HotToastService } from '@ngneat/hot-toast';
-import { AuthenticationService } from '../services/authentication.service';
+import { users } from '../users';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required]),
+  title = 'steamClone';
+  public loginForm = this.formBuilder.group({
+    email: new FormControl(null, [Validators.required]),
+    password: new FormControl(null, [Validators.required]),
   });
+  public usersList = users; 
+
+  private uid: any;
 
   constructor(
-    private authService: AuthenticationService,
+    private formBuilder: FormBuilder,
     private router: Router,
-    private toast: HotToastService
-  ) {}
+    private userService: UserService
+  ) { }
 
-  ngOnInit(): void {}
+  public ngOnInit(): void { }
 
-  get email() {
-    return this.loginForm.get('email');
+  public submit() {
+    const { email, password } = this.loginForm.value
+
+    this.userService.login(email, password)
+      .then((res) => { console.log('succes', res); this.uid = res.user?.uid })
+      .then(() => { this.router.navigate(['/menu', this.uid, 'games']) })
+      .catch((error) => {
+        console.log(error.code);
+        console.log(error.message);
+        alert(error.message);
+      })
+    this.loginForm.reset();
   }
 
-  get password() {
-    return this.loginForm.get('password');
-  }
-
-  submit() {
-    if (!this.loginForm.valid) {
-      return;
-    }
-
-    const { email, password } = this.loginForm.value;
-    this.authService
-      .login(email, password)
-      .pipe(
-        this.toast.observe({
-          success: 'Logged in successfully',
-          loading: 'Logging in...',
-          error: ({ message }) => `There was an error: ${message} `,
-        })
-      )
-      .subscribe(() => {
-        this.router.navigate(['/games']);
-      });
-  }
 }

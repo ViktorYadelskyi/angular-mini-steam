@@ -1,14 +1,24 @@
-<div class="form__login-container">
-  <form class="form__login-item"  [formGroup]="loginForm" (ngSubmit)="submit()">
-    <input class="form__login-input" type="text" placeholder="Email" formControlName="email" />
-    <p *ngIf="email?.errors?.['required']">*Email address is required</p>
-    <p *ngIf="email?.errors?.['email']">Please enter a valid email address</p>
-
-    <input  class="form__login-input" type="password" placeholder="Password" formControlName="password" />
-    <p *ngIf="password?.errors?.['required']">*Password is required</p>
-
-    <button class="form__button" type="submit">Login</button>
-
-    <span>New to our platform? <a routerLink="/sign-up">Sign up!</a></span>
-  </form>
+<div class="round">
+  <div class="signIn">
+    <h3>Sign In</h3>
+    <form [formGroup]="loginForm" (submit)="submit()">
+      <p>Email</p>
+      <input type="text" placeholder="email" formControlName="email">
+      <p>Password</p>
+      <input type="password" placeholder="password" formControlName="password">
+      <button type="submit" [disabled]="!loginForm.valid">Sign In</button>
+    </form>
+  </div>
+  <div>
+    <table>
+      <thead>
+        <th>login</th>
+        <th>password</th>
+      </thead>
+      <tr *ngFor="let user of usersList">
+        <td>{{user.login}}</td>
+        <td>{{user.pass}}</td>
+      </tr>
+    </table>
+  </div>
 </div>

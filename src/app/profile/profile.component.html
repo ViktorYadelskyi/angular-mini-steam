@@ -1,32 +1,14 @@
-<!-- <div  *ngIf="user$ | async as user">
-    <input value="{{ user.displayName }}"/>
-    <input value="{{ user.email }}" readonly />
-</div> -->
-<!-- <h1 *ngIf="user$ | async as user">Welcome {{ user.displayName }}!</h1>
-<h1 *ngIf="user$ | async as user">Welcome {{ user.email }}!</h1> -->
-
-<div *ngIf="user$ | async as user">
+<div>
   <div>
-    <h2>Profile</h2>
-    <form [formGroup]="profileForm">
-      <label for="usernameInput">Username</label>
-      <input
-        type="text"
-        placeholder="Username"
-        id="usernameInput"
-        value="{{ user.displayName }}"
-      />
-      <label for="emailInput">Email</label>
-      <input
-        type="text"
-        placeholder="Email"
-        id="emailInput"
-        value="{{ user.email }}"
-        readonly
-      />
-      <label for="ageInput">Age</label>
-      <input type="number" placeholder="Age" id="ageInput" value="40" />
-      <button (click)="saveInfo()">Save</button>
+    <h3>Profile</h3>
+    <form [formGroup]="profileForm" (submit)="submit()">
+      <p>Username</p>
+      <input type="text" placeholder="username" formControlName="username" value="{{user ? user.username : null}}">
+      <p>Email</p>
+      <input type="text" placeholder="email" formControlName="email" value="{{user ? user.email : null}}" readonly>
+      <p>Age</p>
+      <input type="number" min="1" placeholder="age" formControlName="age" value="{{user ? user.age : null}}">
+      <button type="submit" [disabled]="!profileForm.valid">Save</button>
     </form>
   </div>
 </div>

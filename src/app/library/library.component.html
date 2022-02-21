@@ -1,1 +1,15 @@
-<p>library works!</p>
+<div>
+    <h3>My Games</h3>
+    <div>
+        <div class="card" *ngFor="let game of games">
+            <div>
+                <h2>{{game.name}}</h2>
+            </div>
+            <p>{{game.about}}</p>
+            <div>
+                <button type="button" (click)=download(game.name)>Download</button>
+                <button type="button" (click)=share(game.name)>Share</button>
+            </div>
+        </div>
+    </div>
+</div>

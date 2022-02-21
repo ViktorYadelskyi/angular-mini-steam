@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators, FormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-friends',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FriendsComponent implements OnInit {
 
-  constructor() { }
+  public searchForm = this.formBuilder.group({
+    searchfriends: new FormControl(null, [Validators.required]),
+  })
 
-  ngOnInit(): void {
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute) { }
+
+  ngOnInit(): void { }
+
+  public submit() {
+    console.warn('New friends have been found', this.searchForm.value.searchfriends);
+    this.router.navigate(['./search'], { 
+      relativeTo: this.route, queryParams: { search: this.searchForm.value.searchfriends } 
+    })
   }
 
 }
