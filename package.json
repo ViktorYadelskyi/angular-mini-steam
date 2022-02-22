@@ -9,7 +9,6 @@
     "test": "ng test",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "postinstall": "ng build --aot -prod",
     "heroku-postbuild": "ng build --prod"
   },
   "private": true,
