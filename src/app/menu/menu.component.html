@@ -1,6 +1,8 @@
 <nav class="nav">
   <div class="nav__menu">
-    <img src="../assets/logo.png" alt="steam" class="logo" />
+    <a [routerLink]="['/menu', uid, 'games']">
+      <img src="../assets/logo.png" alt="steam" class="logo" />
+    </a>
     <a
       routerLinkActive="router-link-active"
       [routerLink]="['/menu', uid, 'games']"
