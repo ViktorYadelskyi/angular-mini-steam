@@ -8,6 +8,7 @@ import { FriendsComponent } from './friends/friends.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FriendsSearchComponent } from './friends/friends-search/friends-search.component';
 import { FriendsListComponent } from './friends/friends-list/friends-list.component';
+import { Err404Component } from './err404/err404.component';
 
 const friendsRoutes: Routes = [
   { path: 'search', component: FriendsSearchComponent },
@@ -20,6 +21,7 @@ const menuRoutes: Routes = [
   { path: 'friends', component: FriendsComponent },
   { path: 'friends', component: FriendsComponent, children: friendsRoutes },
   { path: 'profile', component: ProfileComponent },
+  { path: '**', component: Err404Component },
 ];
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -31,5 +33,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-
 export class AppRoutingModule {}

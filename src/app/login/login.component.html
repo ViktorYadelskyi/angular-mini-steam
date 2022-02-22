@@ -3,7 +3,7 @@
     <h1>Sign In</h1>
     <form class="form-signin-input" [formGroup]="loginForm" (submit)="submit()">
       <div>
-        <p>Email - user_1@gmail.com</p>
+        <p>Email</p>
         <input
           class="form-control"
           type="text"
@@ -12,7 +12,7 @@
         />
       </div>
       <div>
-        <p>Password - user1pass</p>
+        <p>Password</p>
         <input
           class="form-control"
           type="password"
@@ -24,5 +24,17 @@
         Sign In
       </button>
     </form>
+    <div class="allusers">
+      <table>
+        <thead>
+          <th>login</th>
+          <th>password</th>
+        </thead>
+        <tr *ngFor="let user of usersList">
+          <td>{{ user.login }}</td>
+          <td>{{ user.pass }}</td>
+        </tr>
+      </table>
+    </div>
   </div>
 </div>
