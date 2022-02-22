@@ -1,15 +1,27 @@
-<div>
-    <h3>My Games</h3>
-    <div>
-        <div class="card" *ngFor="let game of games">
-            <div>
-                <h2>{{game.name}}</h2>
-            </div>
-            <p>{{game.about}}</p>
-            <div>
-                <button type="button" (click)=download(game.name)>Download</button>
-                <button type="button" (click)=share(game.name)>Share</button>
-            </div>
+<div class="games">
+  <h2>My Games</h2>
+
+  <div class="games__cards">
+    <div class="card" *ngFor="let game of games">
+      <div class="card__up">
+        <h3>{{ game.name }}</h3>
+      </div>
+
+      <div class="card__down">
+        <p>{{ game.about }}</p>
+        <div class="card__downBtns">
+          <button
+            class="btn download"
+            type="button"
+            (click)="download(game.name)"
+          >
+            Download
+          </button>
+          <button class="btn share" type="button" (click)="share(game.name)">
+            Share
+          </button>
         </div>
+      </div>
     </div>
+  </div>
 </div>

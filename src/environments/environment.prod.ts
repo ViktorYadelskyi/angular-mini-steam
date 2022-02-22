@@ -9,5 +9,5 @@ export const environment = {
     authDomain: 'angular-mini-steam.firebaseapp.com',
     messagingSenderId: '108729334529',
   },
-  production: true
+  production: true,
 };

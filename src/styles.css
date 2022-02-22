@@ -1,10 +1,9 @@
-a{
-    color: #000;
+* {
+  margin: 0;
+  box-sizing: border-box;
 }
 
-
-html, body { height: 100%; }
-body { 
-    margin: 0; 
-    font-family: 'Roboto', sans-serif; 
+body {
+  font-family: "Roboto", sans-serif;
+  background: #e5e5e5;
 }
