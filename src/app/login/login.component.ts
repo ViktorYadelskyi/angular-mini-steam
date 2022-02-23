@@ -33,15 +33,12 @@ export class LoginComponent implements OnInit {
     this.userService
       .login(email, password)
       .then((res) => {
-        console.log('succes', res);
         this.uid = res.user?.uid;
       })
       .then(() => {
         this.router.navigate(['/menu', this.uid, 'games']);
       })
       .catch((error) => {
-        console.log(error.code);
-        console.log(error.message);
         alert(error.message);
       });
     this.loginForm.reset();

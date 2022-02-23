@@ -32,7 +32,6 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.uid = this.route.snapshot.root.children[0].params['uid'];
-    console.log(this.uid);
 
     this.userService
       .readUser(this.uid)
@@ -46,7 +45,6 @@ export class ProfileComponent implements OnInit {
   }
 
   public submit() {
-    console.warn('Your profile has been modified', this.profileForm.value);
     const { username, age } = this.profileForm.value;
     this.userService.update(`users/${this.uid}`, { username, age });
   }
