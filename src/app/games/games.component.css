@@ -81,7 +81,6 @@
 }
 
 .card__up {
-  box-sizing: border-box;
   background-color: #bdbcff;
   padding: 8px;
   height: 150px;
@@ -104,7 +103,6 @@
 }
 
 .card__down {
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   padding: 15px;
